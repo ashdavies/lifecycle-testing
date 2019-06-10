@@ -1,4 +1,4 @@
-package io.ashdavies.testing
+package io.ashdavies.lifecycle.testing
 
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit

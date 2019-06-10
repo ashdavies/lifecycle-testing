@@ -1,6 +1,6 @@
 @file:SuppressLint("RestrictedApi")
 
-package io.ashdavies.testing
+package io.ashdavies.lifecycle.testing
 
 import android.annotation.SuppressLint
 import androidx.arch.core.executor.ArchTaskExecutor

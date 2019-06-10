@@ -1,26 +1,20 @@
-package io.ashdavies.testing
+package io.ashdavies.lifecycle.testing
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExecutorCoroutineDispatcher
-import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.Dispatchers.Unconfined
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
-@ObsoleteCoroutinesApi
-class SingleThreadDispatcherExtension : BeforeEachCallback, AfterEachCallback {
-
-  private val dispatcher: ExecutorCoroutineDispatcher = newSingleThreadContext("test")
+class UnconfinedDispatcherExtension : BeforeEachCallback, AfterEachCallback {
 
   override fun beforeEach(context: ExtensionContext) {
-    Dispatchers.setMain(dispatcher)
+    Dispatchers.setMain(Unconfined)
   }
 
   override fun afterEach(context: ExtensionContext) {
     Dispatchers.resetMain()
-    dispatcher.close()
   }
 }

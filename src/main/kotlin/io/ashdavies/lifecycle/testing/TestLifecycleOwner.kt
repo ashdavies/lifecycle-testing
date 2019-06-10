@@ -1,4 +1,4 @@
-package io.ashdavies.testing
+package io.ashdavies.lifecycle.testing
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Lifecycle.Event.ON_CREATE
