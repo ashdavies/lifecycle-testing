@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtensionContext
 @ObsoleteCoroutinesApi
 class SingleThreadDispatcherExtension : BeforeEachCallback, AfterEachCallback {
 
-  private val dispatcher: ExecutorCoroutineDispatcher = newSingleThreadContext("test")
+  private val dispatcher: ExecutorCoroutineDispatcher = newSingleThreadContext(NAME)
 
   override fun beforeEach(context: ExtensionContext) {
     Dispatchers.setMain(dispatcher)
@@ -22,5 +22,10 @@ class SingleThreadDispatcherExtension : BeforeEachCallback, AfterEachCallback {
   override fun afterEach(context: ExtensionContext) {
     Dispatchers.resetMain()
     dispatcher.close()
+  }
+
+  companion object {
+
+    private const val NAME = "io.ashdavies.lifecycle.testing"
   }
 }

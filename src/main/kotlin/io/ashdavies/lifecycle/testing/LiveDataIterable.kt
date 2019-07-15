@@ -17,7 +17,11 @@ internal class LiveDataIterable<T> : LiveDataRegistry<T> {
   }
 
   override fun expect(vararg values: T) {
-    check(listOf(*values) == history) { "Expecting values $values but it is actually $history" }
+    expect(listOf(*values))
+  }
+
+  override fun expect(value: List<T>) {
+    check(value == history) { "Expected values $value but it is actually $history" }
   }
 
   override fun await() {

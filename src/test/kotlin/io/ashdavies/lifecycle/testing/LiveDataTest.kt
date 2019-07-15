@@ -4,8 +4,10 @@ import androidx.lifecycle.Lifecycle.State.INITIALIZED
 import androidx.lifecycle.Lifecycle.State.RESUMED
 import androidx.lifecycle.MutableLiveData
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-internal class LiveData {
+@ExtendWith(InstantTaskExecutorExtension::class)
+internal class LiveDataTest {
 
   private val source: MutableLiveData<String> = MutableLiveData()
 
@@ -19,7 +21,7 @@ internal class LiveData {
   }
 
   @Test
-  internal fun `should emit value in resumed state`() {
+  fun `should emit value in resumed state`() {
     val observer: TestObserver<String> = source.test(RESUMED)
 
     source.emit("Hello World")
