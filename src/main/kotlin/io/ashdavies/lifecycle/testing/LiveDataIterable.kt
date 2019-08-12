@@ -30,13 +30,13 @@ internal class LiveDataIterable<T> : LiveDataRegistry<T> {
 
   override fun expect(vararg values: T) {
     assertThat(history)
-        .containsExactly(values)
+        .containsExactly(*values)
         .inOrder()
   }
 
   override fun last(vararg values: T) {
     assertThat(history.takeLast(values.size))
-        .containsExactly(values)
+        .containsExactly(*values)
         .inOrder()
   }
 
