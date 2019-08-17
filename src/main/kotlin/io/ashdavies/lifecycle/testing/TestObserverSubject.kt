@@ -14,4 +14,3 @@ class TestObserverSubject<T>(
     internal fun <T> factory(): Factory<TestObserverSubject<T>, TestObserver<T>> = Factory(::TestObserverSubject)
   }
 }
-LiveDataIterableTest
