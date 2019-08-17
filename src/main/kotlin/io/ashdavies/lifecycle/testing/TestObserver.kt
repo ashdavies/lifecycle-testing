@@ -1,8 +1,14 @@
 package io.ashdavies.lifecycle.testing
 
 import androidx.lifecycle.Observer
+import com.google.common.truth.Truth.assertAbout
+import io.ashdavies.lifecycle.testing.TestObserverSubject.Companion.factory
 
-class TestObserver<T> : LiveDataRegistry<T> by LiveDataIterable(), Observer<T> {
+class TestObserver<T> private constructor(private val register: LiveDataRegister<T>) : LiveDataRegistry<T> by register, Observer<T> {
 
-  override fun onChanged(it: T) = emit(it)
+  internal constructor() : this(LiveDataIterable())
+
+  override fun onChanged(it: T) = register.emit(it)
+
+  fun assertAbout(): TestObserverSubject<T> = assertAbout(factory<T>()).that(this)
 }

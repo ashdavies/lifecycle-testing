@@ -4,7 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-internal class LiveDataIterable<T> : LiveDataRegistry<T> {
+internal class LiveDataIterable<T> : LiveDataRegister<T> {
 
   private val history: MutableList<T> = mutableListOf()
   private var latch = CountDownLatch(0)
@@ -45,6 +45,6 @@ internal class LiveDataIterable<T> : LiveDataRegistry<T> {
   }
 
   override fun once(value: T) {
-    assertThat(history).containsExactly(value)
+    assertThat(history).contains(value)
   }
 }

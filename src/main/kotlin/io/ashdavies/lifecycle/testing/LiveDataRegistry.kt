@@ -8,8 +8,6 @@ interface LiveDataRegistry<T> : Iterable<T> {
 
   fun await(timeout: Long, unit: TimeUnit)
 
-  fun emit(vararg values: T)
-
   fun expect(vararg values: T)
 
   fun last(vararg values: T)
