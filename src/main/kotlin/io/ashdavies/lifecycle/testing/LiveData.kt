@@ -4,11 +4,7 @@ import androidx.lifecycle.Lifecycle.State
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.google.common.truth.Truth.assertAbout
-import io.ashdavies.lifecycle.testing.TestObserverSubject.Companion.factory
 import java.util.concurrent.TimeUnit
-
-fun <T> assertThat(actual: LiveData<T>?): TestObserverSubject<T> = assertAbout(factory<T>()).that(actual?.test())
 
 fun <T> LiveData<T>.await() = test().await()
 

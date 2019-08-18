@@ -1,36 +1,36 @@
 package io.ashdavies.lifecycle.testing
 
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Timeout
-import org.junit.jupiter.api.assertThrows
-import java.util.concurrent.TimeUnit.MILLISECONDS
-import java.util.concurrent.TimeoutException
+import java.lang.Thread.State.WAITING
+import java.util.concurrent.CountDownLatch
 
 internal class LiveDataIterableTest {
 
   private val iterable = LiveDataIterable<String>()
 
   @Test
-  fun `should not interrupt awaited thread`() {
-    Thread
-        .currentThread()
-        .interrupt()
-  }
-
-  @Test
-  @Timeout(value = 100, unit = MILLISECONDS)
   fun `should await value indefinitely`() {
-    assertThrows<TimeoutException> {
+    val latch = CountDownLatch(1)
+
+    val thread = Thread(Runnable {
+      latch.countDown()
       iterable.await()
-    }
+    })
+
+    thread.start()
+    latch.await()
+
+    assertThat(thread.state).isEqualTo(WAITING)
   }
 
   @Test
-  @Timeout(value = 100, unit = MILLISECONDS)
   fun `should await value`() {
-    iterable.await()
+    Thread(Runnable {
+      iterable.emit("Hello World")
+    }).start()
 
-    iterable.emit("Hello")
+    iterable.await()
   }
 
   @Test
