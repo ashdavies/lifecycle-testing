@@ -1,0 +1,5 @@
+rootProject.name = 'testing'
+
+include ':jupiter'
+include ':testing'
+include ':truth'
