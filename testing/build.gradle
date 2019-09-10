@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
@@ -32,7 +34,7 @@ repositories {
   jcenter()
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+tasks.withType(KotlinCompile).configureEach {
   kotlinOptions {
     freeCompilerArgs += [
         '-Xuse-experimental=kotlin.contracts.ExperimentalContracts',
