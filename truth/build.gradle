@@ -39,4 +39,5 @@ dependencies {
   api("com.google.truth:truth:1.0")
 
   testImplementation "com.google.truth:truth:1.0"
+  testImplementation "org.junit.jupiter:junit-jupiter:5.5.1"
 }
