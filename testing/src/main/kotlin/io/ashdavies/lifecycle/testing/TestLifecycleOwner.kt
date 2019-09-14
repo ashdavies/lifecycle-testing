@@ -17,7 +17,7 @@ class TestLifecycleOwner(state: State = INITIALIZED) : LifecycleOwner {
   private val registry = LifecycleRegistry(this)
 
   init {
-    registry.markState(state)
+    registry.currentState = state
   }
 
   override fun getLifecycle(): Lifecycle = registry
