@@ -25,13 +25,11 @@ def isReleaseBuild() {
 }
 
 def getReleaseRepositoryUrl() {
-  return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL
-      : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+  return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
 }
 
 def getSnapshotRepositoryUrl() {
-  return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
-      : "https://oss.sonatype.org/content/repositories/snapshots/"
+  return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL : "https://oss.sonatype.org/content/repositories/snapshots/"
 }
 
 def getRepositoryUsername() {
@@ -55,6 +53,7 @@ afterEvaluate { project ->
         repository(url: getReleaseRepositoryUrl()) {
           authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
         }
+
         snapshotRepository(url: getSnapshotRepositoryUrl()) {
           authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
         }
@@ -95,8 +94,7 @@ afterEvaluate { project ->
     sign configurations.archives
   }
 
-  if (project.getPlugins().hasPlugin('com.android.application') ||
-      project.getPlugins().hasPlugin('com.android.library')) {
+  if (project.getPlugins().hasPlugin('com.android.application') || project.getPlugins().hasPlugin('com.android.library')) {
     task install(type: Upload, dependsOn: assemble) {
       repositories.mavenInstaller {
         configuration = configurations.archives
@@ -150,6 +148,7 @@ afterEvaluate { project ->
       from android.sourceSets.main.java.source
     }
   } else {
+    println(project.getPlugins())
     install {
       repositories.mavenInstaller {
         pom.groupId = GROUP

@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
   id("com.android.library")
   id("de.mannodermaus.android-junit5")
@@ -27,19 +25,6 @@ android {
   }
 }
 
-tasks.withType<KotlinCompile> {
-  kotlinOptions {
-    jvmTarget = JavaVersion
-        .VERSION_1_8
-        .toString()
-
-    freeCompilerArgs = listOf(
-        "-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
-        "-Xuse-experimental=kotlin.Experimental"
-    )
-  }
-}
-
 dependencies {
   implementation("androidx.lifecycle:lifecycle-common-java8:2.1.0")
   implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
@@ -52,7 +37,3 @@ dependencies {
   testImplementation("com.google.truth:truth:1.0")
   testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
 }
-
-tasks
-    .withType<Javadoc>()
-    .all { enabled = false }
