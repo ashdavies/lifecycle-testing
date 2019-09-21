@@ -21,7 +21,7 @@ android {
 
   sourceSets {
     mainSrcDirs("src/main/kotlin")
-    testSrcDirs("src/main/kotlin")
+    testSrcDirs("src/test/kotlin")
   }
 }
 

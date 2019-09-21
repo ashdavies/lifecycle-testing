@@ -20,21 +20,21 @@ allprojects {
 subprojects {
   apply(from = "${rootProject.projectDir}/gradle/git-release-notes.gradle")
   apply(from = "${rootProject.projectDir}/gradle/gradle-mvn-push.gradle")
-}
 
-tasks
-    .withType<Javadoc>()
-    .all { enabled = false }
+  tasks
+      .withType<Javadoc>()
+      .all { enabled = false }
 
-tasks.withType<KotlinCompile> {
-  kotlinOptions {
-    jvmTarget = JavaVersion
-        .VERSION_1_8
-        .toString()
+  tasks.withType<KotlinCompile> {
+    kotlinOptions {
+      jvmTarget = JavaVersion
+          .VERSION_1_8
+          .toString()
 
-    freeCompilerArgs = listOf(
-        "-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
-        "-Xuse-experimental=kotlin.Experimental"
-    )
+      freeCompilerArgs = listOf(
+          "-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
+          "-Xuse-experimental=kotlin.Experimental"
+      )
+    }
   }
 }

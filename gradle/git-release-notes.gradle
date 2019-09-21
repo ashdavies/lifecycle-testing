@@ -22,7 +22,6 @@ def gitReleaseNotes() {
   command += " sort -d |"
   command += " tee ${project.ext.releaseNotes}"
 
-  print(command)
   def process = ['sh', '-c', command].execute()
   process.waitFor()
   process.text
