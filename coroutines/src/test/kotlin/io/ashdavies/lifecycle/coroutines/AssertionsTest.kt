@@ -4,7 +4,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
-internal class CoroutineScopeTest {
+internal class AssertionsTest {
 
   @Test
   fun `should catch nested scope failure`() = runBlocking<Unit> {
