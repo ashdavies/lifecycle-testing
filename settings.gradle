@@ -1,3 +1,4 @@
+include ':coroutines'
 include ':jupiter'
 include ':testing'
 include ':truth'
