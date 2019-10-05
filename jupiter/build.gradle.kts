@@ -33,5 +33,6 @@ dependencies {
   api("org.junit.jupiter:junit-jupiter-api:5.5.1")
 
   testImplementation("com.google.truth:truth:1.0")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2")
   testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
 }
