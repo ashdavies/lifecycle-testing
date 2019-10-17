@@ -7,3 +7,5 @@ import com.google.common.truth.IterableSubject
 import io.ashdavies.lifecycle.testing.test
 
 fun <T> LiveData<T>.assertAbout(state: State = STARTED): IterableSubject = test(state).assertAbout()
+
+fun <T> assertThat(actual: LiveData<T>): IterableSubject = actual.assertAbout()

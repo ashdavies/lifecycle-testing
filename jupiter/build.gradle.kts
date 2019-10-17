@@ -28,11 +28,11 @@ android {
 dependencies {
   implementation("androidx.arch.core:core-runtime:2.1.0")
   implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.50")
-  implementation("org.junit.jupiter:junit-jupiter:5.5.1")
+  implementation("org.junit.jupiter:junit-jupiter:5.5.2")
 
-  api("org.junit.jupiter:junit-jupiter-api:5.5.1")
+  api("org.junit.jupiter:junit-jupiter-api:5.5.2")
 
   testImplementation("com.google.truth:truth:1.0")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2")
-  testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
+  testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
 }

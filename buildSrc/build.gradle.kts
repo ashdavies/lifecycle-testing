@@ -6,7 +6,7 @@ buildscript {
   }
 
   dependencies {
-    classpath("com.android.tools.build:gradle:3.6.0-alpha10")
+    classpath("com.android.tools.build:gradle:3.6.0-beta01")
   }
 }
 
@@ -15,5 +15,5 @@ plugins {
 }
 
 dependencies {
-  implementation("com.android.tools.build:gradle:3.6.0-alpha10")
+  implementation("com.android.tools.build:gradle:3.6.0-beta01")
 }

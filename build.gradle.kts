@@ -7,8 +7,8 @@ buildscript {
   }
 
   dependencies {
-    classpath("com.android.tools.build:gradle:3.6.0-alpha12")
-    classpath("de.mannodermaus.gradle.plugins:android-junit5:1.5.1.0")
+    classpath("com.android.tools.build:gradle:3.6.0-beta01")
+    classpath("de.mannodermaus.gradle.plugins:android-junit5:1.5.2.0")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
   }
 }
@@ -30,11 +30,6 @@ subprojects {
       jvmTarget = JavaVersion
           .VERSION_1_8
           .toString()
-
-      freeCompilerArgs = listOf(
-          "-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
-          "-Xuse-experimental=kotlin.Experimental"
-      )
     }
   }
 }
