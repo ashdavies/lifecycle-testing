@@ -20,6 +20,7 @@ internal class LiveDataIterableTest {
 
     thread.start()
 
+    @Suppress("ControlFlowWithEmptyBody")
     while (thread.state != WAITING) {
     }
   }
@@ -38,20 +39,20 @@ internal class LiveDataIterableTest {
   fun `should emit values`() {
     iterable.emit("Hello", "World")
 
-    iterable.expect("Hello", "World")
+    iterable.check("Hello", "World")
   }
 
   @Test
-  fun `should expect values`() {
+  fun `should check values`() {
     iterable.emit("Hello", "World")
 
-    iterable.expect("Hello", "World")
+    iterable.check("Hello", "World")
   }
 
   @Test
   fun `should provide expected value exception`() {
     val exception: AssertionError = assertThrows {
-      iterable.expect("Hello")
+      iterable.check("Hello")
     }
 
     assertThat(exception.message).isEqualTo(
@@ -62,6 +63,15 @@ expected   : [Hello]
 but was    : []
     """.trimIndent()
     )
+  }
+
+  @Test
+  fun `should expect index`() {
+    iterable.expect(1)
+
+    iterable.emit("Hello", "World")
+
+    iterable.expect(2)
   }
 
   @Test
@@ -89,7 +99,7 @@ but was : World
   }
 
   @Test
-  fun `should never expect value`() {
+  fun `should never check value`() {
     iterable.emit("Hello")
 
     iterable.never("World")
@@ -113,7 +123,7 @@ full contents                 : [Hello, World]
   }
 
   @Test
-  fun `should expect value once`() {
+  fun `should check value once`() {
     iterable.emit("Hello", "World")
 
     iterable.once("Hello")
